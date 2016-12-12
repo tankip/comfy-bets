@@ -11,13 +11,14 @@ import {
   AuthProviders 
 } from "angularfire2";
 
-import { LoginService } from './login.service';
+import { GamesService } from './games.service';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { MainComponent } from './main/main.component';
 import { ManageGamesComponent } from './manage-games/manage-games.component';
+import { AddGamesComponent } from './add-games/add-games.component';
+import { BestGamesComponent } from './best-games/best-games.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCZycQd5kVuyNhqb9YiLnWicC5n1wZR7Lg",
@@ -30,10 +31,11 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     AdminComponent,
     MainComponent,
-    ManageGamesComponent
+    ManageGamesComponent,
+    AddGamesComponent,
+    BestGamesComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ const firebaseConfig = {
       method: AuthMethods.Popup
     })
   ],
-  providers: [LoginService],
+  providers: [GamesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

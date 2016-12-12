@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default">
-  <div class="container">
+<div class="container">
+  <nav class="navbar navbar-default">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -11,17 +11,35 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!isLogged"><a><button class="btn btn-primary" (click)="login()">Sign In</button></a></li>
-        <li *ngIf="isLogged"><a><button class="btn btn-primary" (click)="logout()">Sign Out</button></a></li>
+        <li *ngIf="!isLogged"><a><button class="btn btn-success" (click)="login()">Sign In</button></a></li>
+        <li *ngIf="isLogged"><a><button class="btn btn-danger" (click)="logout()">Sign Out</button></a></li>
       </ul>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
 <div class="container">
-  <div *ngIf="admin">
-    <button class="btn btn-primary" (click)="signIn()">Sign In</button>
 
-    <button class="btn btn-primary" (click)="signOut()">Sign Out</button>
+  <div class="panel panel-default text-center">
+    <div class="panel-body">
+      <p><strong>Welcome to Comfy Bets betting community!</strong></p>
+    </div>
   </div>
+
+  <div class="alert alert-info text-center" role="alert" *ngIf="!isLogged">
+    <p>Sign in to view Today's Best Picks</p> 
+    <p>We use Google Sign In in our application</p>
+    <p>If you have not signed up just click on the Sign In button and it will take you to the sign up page</p>
+  </div>
+  <div *ngIf="isLogged">
+    <app-best-games></app-best-games>
+  </div>
+
+  <div *ngIf="!admin">
+    <app-main></app-main>
+  </div>
+  <div *ngIf="admin">
+    <app-admin></app-admin>
+  </div>
+
 </div>
 

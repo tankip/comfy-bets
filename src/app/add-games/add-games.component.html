@@ -1,0 +1,42 @@
+<form #form="ngForm" (ngSubmit)="save(form)">
+  <div class="form-group">
+    <label>Country</label>
+    <input class="form-control" [(ngModel)]="game.country" type="text" required [ngModelOptions]="{standalone: true}" placeholder="Country Here">
+  </div>
+  <div class="form-group">
+    <label>Competition</label>
+    <input class="form-control" [(ngModel)]="game.competition" type="text" required [ngModelOptions]="{standalone: true}" placeholder="Competition Here">
+  </div>
+  <div class="form-group">
+    <label>Home Team</label>
+    <input class="form-control" [(ngModel)]="game.hometeam" type="text" required [ngModelOptions]="{standalone: true}" placeholder="Home Team Here">
+  </div>
+  <div class="form-group">
+    <label>Away Team</label>
+    <input class="form-control" [(ngModel)]="game.awayteam" type="text" required [ngModelOptions]="{standalone: true}" placeholder="Away Team Here">
+  </div>
+  <div class="form-group">
+    <label>Prediction</label>
+    <select class="form-control" [(ngModel)]="game.prediction" required [ngModelOptions]="{standalone: true}" placeholder="Select Prediction">
+      <option value="Home Win">Home Win</option>
+      <option value="Draw">Draw</option>
+      <option value="Away Win">Away Win</option>
+      <option value="DC 1 or X">DC 1 or X</option>
+      <option value="DC 1 or 2">DC 1 or 2</option>
+      <option value="DC X or 2'">DC X or 2'</option>
+      <option value="GG/BTTS">GG/BTTS</option>
+      <option value="Over 1.5">Over 1.5</option>
+      <option value="Over 2.5">Over 2.5</option>
+      <option value="Under 1.5">Under 1.5</option>
+      <option value="Under 2.5">Under 2.5</option>
+    </select> 
+  </div>
+  <div class="form-group">
+    <label>Pick Type</label>
+    <select class="form-control" [(ngModel)]="game.pick" required [ngModelOptions]="{standalone: true}" placeholder="Select Type">
+      <option value="normal">Normal Pick</option>
+      <option value="best">Best Pick</option>
+    </select> 
+  </div>
+  <button type="submit" class="btn btn-primary" *ngIf="form.valid">Add Game</button>
+</form>

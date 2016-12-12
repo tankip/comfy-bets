@@ -1,3 +1,70 @@
-<p>
-  main works!
-</p>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">HOME</a></li>
+  <li><a data-toggle="tab" href="#history">HISTORY</a></li>
+  <li><a data-toggle="tab" href="#about">ABOUT US</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <div *ngIf="todayGames">
+      <h3 class="text-center">Today's Accumuator Picks</h3>
+      <table class="table table-bordered">
+        <tr>
+          <th>Country</th>
+          <th>Match</th>
+          <th>Prediction</th>
+        </tr>
+        <tr *ngFor="let game of todayGames">
+          <td>{{ game.country }}</td>
+          <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
+          <td>{{ game.prediction }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="history" class="tab-pane fade">
+     <h3 class="text-center">Games History</h3>
+    <table class="table table-bordered">
+      <tr>
+        <th>Match</th>
+        <th>Prediction</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let game of lastGames">
+        <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
+        <td>{{ game.prediction }}</td>
+        <td>{{ game.result }}</td>
+      </tr>
+    </table>
+  </div>
+  <div id="about" class="tab-pane fade text-center">
+    <div class="jumbotron text-center">
+      <a class="btn btn-primary" href="mailto:comfyannex@gmail.com">Send Email For Feedback/Inquiries</a> 
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>Make maximum profits from our accurate Football Predictions! </p>
+        <p>We provide analysis for over 35 leagues. This covers both major and minor leagues</p>
+        <p>We help you make decisions, which provide real monetary value for you.</p>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p> We believe that betting needs to be dealt with the utmost importance: there are no gurus,or absolute success.
+          We need to point out that football prognostic data is a very difficult task as in football, more than any other sport, the element of surprise awaits.</p>
+        <p>You are not compelled to take all our selections. It is your choice whether to place a bet on recommended result.
+          We help you make decisions, which provide real monetary value for you.</p>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>Please note that, you can not bet or play on this website. We only offer betting tips and predictions on football matches. 
+          We advise you to respect the laws on gambling in your country.</p>
+        <p>Betting can be very risky and users should only speculate with money that they can comfortably 
+          afford to lose and should ensure that the risks involved are fully understood, seeking advice if necessary.</p>
+      </div>
+    </div>
+  </div>
+
+</div> 

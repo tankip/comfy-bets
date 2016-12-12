@@ -1,3 +1,48 @@
-<p>
-  Page
-</p>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">HOME</a></li>
+  <li><a data-toggle="tab" href="#add">ADD GAME</a></li>
+  <li><a data-toggle="tab" href="#history">HISTORY</a></li>
+  <li><a data-toggle="tab" href="#all">ALL GAMES</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+     <h3>Update Games</h3>
+    <app-manage-games></app-manage-games>
+  </div>
+  <div id="add" class="tab-pane fade">
+     <h3>Add Game</h3>
+    <app-add-games></app-add-games>
+  </div>
+  <div id="history" class="tab-pane fade">
+     <h3>Games History</h3>
+    <table class="table table-bordered">
+      <tr>
+        <th>Match</th>
+        <th>Prediction</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let game of allGames">
+        <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
+        <td><div>{{ game.prediction }}</div>
+          <div>({{ game.result }})</div>
+        </td>
+        <td><button class="btn btn-danger" (click)="delete(game.$key)">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+  <div id="all" class="tab-pane fade">
+    <table class="table table-bordered">
+      <tr>
+        <th>Country</th>
+        <th>Match</th>
+        <th>Prediction</th>
+      </tr>
+      <tr *ngFor="let game of allGames">
+        <td>{{ game.country }}</td>
+        <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
+        <td>{{ game.prediction }}</td>
+      </tr>
+    </table>
+  </div>
+</div> 

@@ -1,19 +1,15 @@
-<div *ngIf="pendingGames">
+<div *ngIf="bestGames">
+  <h3 class="text-center">Today's Best Picks</h3>
   <table class="table table-bordered">
     <tr>
       <th>Country</th>
       <th>Match</th>
       <th>Prediction</th>
-      <th>Action</th>
     </tr>
-    <tr *ngFor="let game of pendingGames">
+    <tr *ngFor="let game of bestGames">
       <td>{{ game.country }}</td>
       <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
       <td>{{ game.prediction }}</td>
-      <td>
-        <button class="btn btn-success" (click)="won(game.$key)">Won</button>
-        <button class="btn btn-primary" (click)="lost(game.$key)">Lost</button>
-      </td>
     </tr>
   </table>
 </div>

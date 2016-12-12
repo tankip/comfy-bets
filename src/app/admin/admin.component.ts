@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from '../games.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+   public allGames: any;
+
+  constructor(public gameServ: GamesService) { 
+    this.gameServ.games.subscribe((data) => {
+      this.allGames = data.reverse();
+    });
+  }
+  
+  delete(game) {
+    this.gameServ.delete(game);
+  }
 
   ngOnInit() {
   }
