@@ -27,13 +27,7 @@ import { HistoryComponent } from './history/history.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCZycQd5kVuyNhqb9YiLnWicC5n1wZR7Lg",
-  authDomain: "comfy-bets.firebaseapp.com",
-  databaseURL: "https://comfy-bets.firebaseio.com",
-  storageBucket: "comfy-bets.appspot.com",
-  messagingSenderId: "243930900717"
-};
+
 
 @NgModule({
   declarations: [
