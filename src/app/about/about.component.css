@@ -1,9 +1,7 @@
-.center {
-    text-align: center;
-}
-.admin {
-    border-radius: 2px;
+.about {
     background-color: white;
+    border-radius: 2px;
     padding: 1%;
     margin-bottom: 10px;
+    text-align: center;
 }

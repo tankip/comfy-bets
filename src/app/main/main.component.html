@@ -1,42 +1,23 @@
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">HOME</a></li>
+<ul class="nav nav-tabs tabs-left">
+  <li class="active"><a data-toggle="tab" href="#home">TODAY'S</a></li>
+  <li><a data-toggle="tab" href="#best">BEST TIP</a></li>
   <li><a data-toggle="tab" href="#history">HISTORY</a></li>
-  <li><a data-toggle="tab" href="#about">ABOUT US</a></li>
 </ul>
 
 <div class="tab-content">
+
   <div id="home" class="tab-pane fade in active">
-    <div *ngIf="todayGames">
-      <h3 class="text-center">Today's Accumuator Picks</h3>
-      <table class="table table-bordered">
-        <tr>
-          <th>Country</th>
-          <th>Match</th>
-          <th>Prediction</th>
-        </tr>
-        <tr *ngFor="let game of todayGames">
-          <td>{{ game.country }}</td>
-          <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
-          <td>{{ game.prediction }}</td>
-        </tr>
-      </table>
-    </div>
+    <app-todays></app-todays>
   </div>
+
+  <div id="best" class="tab-pane fade">
+    <app-best-games></app-best-games>
+  </div>
+  
   <div id="history" class="tab-pane fade">
-     <h3 class="text-center">Games History</h3>
-    <table class="table table-bordered">
-      <tr>
-        <th>Match</th>
-        <th>Prediction</th>
-        <th>Action</th>
-      </tr>
-      <tr *ngFor="let game of lastGames">
-        <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
-        <td>{{ game.prediction }}</td>
-        <td>{{ game.result }}</td>
-      </tr>
-    </table>
+    <app-history></app-history>
   </div>
+  
   <div id="about" class="tab-pane fade text-center">
     <div class="jumbotron text-center">
       <a class="btn btn-primary" href="mailto:comfyannex@gmail.com">Send Email For Feedback/Inquiries</a> 

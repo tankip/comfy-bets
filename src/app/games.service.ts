@@ -20,7 +20,7 @@ export class GamesService {
   }
 
   update(game, result) {
-    this.af.database.object('/games/'+game).set(result);
+    this.af.database.object('/games/'+game).update({result: result});
   }
 
   delete(game) {

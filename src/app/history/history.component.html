@@ -1,0 +1,19 @@
+<h3 class="text-center">Games History</h3>
+<div *ngIf="lastGames">
+  <table class="table table-bordered">
+    <tr>
+      <th>Match</th>
+      <th>Prediction</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let game of lastGames | paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
+      <td>{{ game.prediction }}</td>
+      <td>{{ game.result }}</td>
+    </tr>
+  </table>
+  <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+</div>
+<div *ngIf="!lastGames" class="alert alert-info">
+  <p>Last Won Tips have not loaded. Tips loading...</p>
+</div>

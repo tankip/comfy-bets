@@ -1,0 +1,16 @@
+<h3 class="text-center">Today's Accumuator Tips</h3>
+<table *ngIf="todayGames == true" class="table table-bordered">
+  <tr>
+    <th>Country</th>
+    <th>Match</th>
+    <th>Prediction</th>
+  </tr>
+  <tr *ngFor="let game of todayGames">
+    <td>{{ game.country }}</td>
+    <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
+    <td>{{ game.prediction }}</td>
+  </tr>
+</table>
+<div *ngIf="todayGames == false" class="alert alert-info">
+  <p>Today's Tips have not been posted. Tips loading...</p>
+</div>

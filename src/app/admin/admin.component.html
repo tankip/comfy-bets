@@ -1,48 +1,70 @@
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">HOME</a></li>
-  <li><a data-toggle="tab" href="#add">ADD GAME</a></li>
-  <li><a data-toggle="tab" href="#history">HISTORY</a></li>
-  <li><a data-toggle="tab" href="#all">ALL GAMES</a></li>
-</ul>
+<div class="container">
+  <div class="jumbotron">
+    <div class="center" *ngIf="!isLogged"><button class="btn btn-success" (click)="login()">Sign In</button></div>
+    <div class="center" *ngIf="isLogged"><button class="btn btn-danger" (click)="logout()">Sign Out</button></div>
+  </div>
+  <div class="admin" *ngIf="isLogged">
+    <div *ngIf="admin">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">HOME</a></li>
+        <li><a data-toggle="tab" href="#add">ADD GAME</a></li>
+        <li><a data-toggle="tab" href="#history">HISTORY</a></li>
+        <li><a data-toggle="tab" href="#all">ALL GAMES</a></li>
+      </ul>
 
-<div class="tab-content">
-  <div id="home" class="tab-pane fade in active">
-     <h3>Update Games</h3>
-    <app-manage-games></app-manage-games>
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+          <h3>Update Games</h3>
+          <app-manage-games></app-manage-games>
+        </div>
+        <div id="add" class="tab-pane fade">
+          <h3>Add Game</h3>
+          <app-add-games></app-add-games>
+        </div>
+        <div id="history" class="tab-pane fade">
+          <h3>Games History</h3>
+          <div *ngIf="allGames">
+            <table class="table table-bordered">
+              <tr>
+                <th>Country</th>
+                <th>Match</th>
+                <th>Action</th>
+              </tr>
+              <tr *ngFor="let game of allGames | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>{{ game.country }}</td>
+                <td><div>{{ game.hometeam }} vs {{ game.awayteam }}</div>
+                  <div>({{ game.result }})</div>
+                </td>
+                <td>{{ game.prediction }} <br><span class="btn badge btn-danger" (click)="delete(game.$key)">Delete</span></td>
+              </tr>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+          <div *ngIf="!allGames" class="alert alert-info">
+            <p>Last Won Tips loading...</p>
+          </div>
+        </div>
+        <div id="all" class="tab-pane fade">
+          <div *ngIf="allGames">
+            <table class="table table-bordered">
+              <tr>
+                <th>Country</th>
+                <th>Match</th>
+                <th>Prediction</th>
+              </tr>
+              <tr *ngFor="let game of allGames | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>{{ game.country }}</td>
+                <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
+                <td>{{ game.prediction }}</td>
+              </tr>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+          <div *ngIf="!allGames" class="alert alert-info">
+            <p>All Games loading...</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="add" class="tab-pane fade">
-     <h3>Add Game</h3>
-    <app-add-games></app-add-games>
-  </div>
-  <div id="history" class="tab-pane fade">
-     <h3>Games History</h3>
-    <table class="table table-bordered">
-      <tr>
-        <th>Match</th>
-        <th>Prediction</th>
-        <th>Action</th>
-      </tr>
-      <tr *ngFor="let game of allGames">
-        <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
-        <td><div>{{ game.prediction }}</div>
-          <div>({{ game.result }})</div>
-        </td>
-        <td><button class="btn btn-danger" (click)="delete(game.$key)">Delete</button></td>
-      </tr>
-    </table>
-  </div>
-  <div id="all" class="tab-pane fade">
-    <table class="table table-bordered">
-      <tr>
-        <th>Country</th>
-        <th>Match</th>
-        <th>Prediction</th>
-      </tr>
-      <tr *ngFor="let game of allGames">
-        <td>{{ game.country }}</td>
-        <td>{{ game.hometeam }} vs {{ game.awayteam }}</td>
-        <td>{{ game.prediction }}</td>
-      </tr>
-    </table>
-  </div>
-</div> 
+</div>
