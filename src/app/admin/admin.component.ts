@@ -24,7 +24,6 @@ export class AdminComponent implements OnInit {
     });
     this.gameServ.games.subscribe((data) => {
       this.allGames = data.reverse();
-      console.log(this.allGames);
     });
   }
   checkAdmin(user) {

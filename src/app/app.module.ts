@@ -11,7 +11,7 @@ import {
   AuthMethods, 
   AuthProviders 
 } from "angularfire2";
-import {Ng2PaginationModule} from 'ng2-pagination'; 
+import { Ng2PaginationModule } from 'ng2-pagination'; 
 
 import { GamesService } from './games.service';
 
